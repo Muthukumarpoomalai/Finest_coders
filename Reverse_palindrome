@@ -1,0 +1,17 @@
+n = int(input("Enter the number for n : "))
+k = int(input("Enter the number for k : "))
+count = 0
+
+for i in range(k):
+    if str(n) == str(n)[::-1]:
+        count += 1
+    else:
+        o = str(n)
+        b = o[::-1]
+        c = int(o) + int(b)   
+        n = c                 
+        count += 1
+        
+        if str(n)==str(n)[::-1]:
+            print([count,n])
+            break
