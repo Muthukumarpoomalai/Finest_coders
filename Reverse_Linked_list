@@ -1,0 +1,79 @@
+class Node:
+    def __init__(self,data):
+        self.data=data
+        self.next=None
+        
+        
+class Linkedlist:
+    def __init__(self):
+        self.head=None
+        
+        
+    def append(self,data):
+        newnode=Node(data)
+        
+        
+        if self.head is None:
+            self.head=newnode
+            
+        else:
+            temp=self.head
+            
+            while temp.next is not None:
+                temp=temp.next
+                
+            temp.next=newnode
+            
+            
+    def display(self):
+        temp=self.head
+        
+        while temp is not None:
+            print(temp.data,end=" ")
+            if temp and temp.next:
+                print("->",end=" ")
+            temp=temp.next
+            
+            
+                
+            
+        print()
+    def reverse_in_groups(self, k):
+        self.head = self._reverse_k_group(self.head, k)        
+    def _reverse_k_group(self,head,k):
+        
+        prev=None
+        curr=head
+        count=0
+        temp=head
+        for i in range(k):
+            if not temp:
+                return  head
+                
+            temp=temp.next
+      
+          
+        while curr and count<k:
+            next=curr.next
+            curr.next=prev
+            prev=curr
+            curr=next
+            count+=1
+            
+        if curr:
+            head.next = self._reverse_k_group(curr, k)
+        return prev
+        
+           
+ll=Linkedlist()            
+
+    
+ll.append(1)
+ll.append(2)
+ll.append(3)
+ll.append(4)
+ll.append(5)
+ll.append(6)
+ll.display()
+ll.reverse_in_groups(4)
+ll.display()
